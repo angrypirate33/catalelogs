@@ -1,4 +1,4 @@
-const catalelog = require('../models/catalelog')
+const Catalelog = require('../models/catalelog')
 
 module.exports = {
     index,
