@@ -7,7 +7,7 @@
 <ul>
     <% catalelog.beer.forEach(function(beer) { %>
         <li>
-            <form action="/beer/<%= catalelog.id %>/<%= beer.id %>?_method=DELETE" method="POST">
+            <form action="/beers/<%= catalelog.id %>/<%= beer.id %>?_method=DELETE" method="POST">
                 <button type="submit">X</button>
             </form>
                 <%= beer.name %>
@@ -16,8 +16,8 @@
         <% }); %>
 </ul>
 
-<form action="/beer/<%= catalelog.id %>" method="POST">
-    <input type="text" name="name">
+<form action="/beers/<%= catalelog.id %>" method="POST">
+    <input type="text" name="name" autocomplete="off">
     <button type="submit">Add Beer</button>
 </form>
 
