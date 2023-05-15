@@ -11,14 +11,13 @@
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"
         defer></script>
     <link rel="stylesheet" href="/stylesheets/style.css" />
-    <title>Template</title>
+    <title>Cat-ALE-Logs</title>
 </head>
 
 <body>
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Template</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -27,6 +26,7 @@
                 <div class="navbar-nav">
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                     <% if (user) { %>
+                        <a class="nav-link" href="/catalelogs">My Cat-ALE-logs</a>
                         <a class="nav-link" href="/logout">Log Out</a>
                     <% } else { %>
                         <a class="nav-link" href="/auth/google">Log In</a>
