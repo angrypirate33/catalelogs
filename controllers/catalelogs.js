@@ -69,5 +69,6 @@ function deleteCatalelog(req, res, next) {
         if (!catalelog.user.equals(req.user.id)) throw new Error('Unauthorized Access')
         return catalelog.deleteOne(req.body)
     })
+    .then(() => res.redirect('/catalelogs'))
     .catch()
 }

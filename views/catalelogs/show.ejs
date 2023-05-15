@@ -1,27 +1,26 @@
 <%- include('../partials/header.ejs') %>
 
 <h3>
-    <%= battleTeam.name %>
+    <%= catalelog.name %>
 </h3>
 
 <ul>
-    <% battleTeam.pokemon.forEach(function(pokemon) { %>
+    <% catalelog.beer.forEach(function(beer) { %>
         <li>
-            <form action="/pokemon/<%= battleTeam.id %>/<%= pokemon.id %>?_method=DELETE" method="POST">
+            <form action="/beer/<%= catalelog.id %>/<%= beer.id %>?_method=DELETE" method="POST">
                 <button type="submit">X</button>
             </form>
-            <a href="/pokedex/<%= pokemon.id %>">
-                <%= pokemon.name %>
+                <%= beer.name %>
             </a>
         </li>
         <% }); %>
 </ul>
 
-<form action="/pokemon/<%= battleTeam.id %>" method="POST">
+<form action="/beer/<%= catalelog.id %>" method="POST">
     <input type="text" name="name">
-    <button type="submit">Add Pokemon</button>
+    <button type="submit">Add Beer</button>
 </form>
 
-<a href="/battle-teams/<%= battleTeam.id %>/edit">Edit</a>
+<a href="/catalelogs/<%= catalelog.id %>/edit">Edit</a>
 
 <%- include('../partials/footer.ejs') %>
