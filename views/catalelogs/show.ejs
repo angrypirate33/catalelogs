@@ -1,29 +1,33 @@
 <%- include('../partials/header.ejs') %>
 <div class="container">
-<h3>
-    <%= catalelog.name %>
-</h3>
+    <h3><%= catalelog.name %></h3>
 
-<ul>
-    <% catalelog.beer.forEach(function(beer) { %>
-        <li>
+    <ul class="collection with-header">
+        <li class="collection-header"><h4>Beer Name</h4></li>
+        <% catalelog.beer.forEach(function(beer) { %>
+        <li class="collection-item">
             <%= beer.name %>
-            <form action="/beers/<%= catalelog.id %>/<%= beer.id %>?_method=DELETE" method="POST">
-                <button class="btn-small red waves-effect waves-light" type="submit">Delete</button>
-            </form>
+                <form action="/beers/<%= catalelog.id %>/<%= beer.id %>?_method=DELETE" method="POST" class="secondary-content">
+                    <button type="submit"><i class="material-icons">delete</i></button>
+                </form>
             </a>
         </li>
         <% }); %>
-</ul>
-
-<form action="/beers/<%= catalelog.id %>" method="POST">
-    <input type="text" name="name" autocomplete="off">
-    <button class="btn waves-effect waves-light" type="submit">Add Beer</button>
-</form>
+    </ul>
+<div class="col s12 l5">
+    <form action="/beers/<%= catalelog.id %>" method="POST" autocomplete="off">
+        <div class="input-field">
+            <i class="material-icons prefix">add_circle</i>
+            <input type="text" name="name" id="name">
+            <label for="name">Beer Name</label>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit">Add Beer</button>
+    </form>
 
 <a href="/catalelogs/<%= catalelog.id %>/edit">
     <button class="btn waves-effect waves-light">Edit cat-ALE-log</button>
 </a>
+</div>
 </div>
 
 <%- include('../partials/footer.ejs') %>
