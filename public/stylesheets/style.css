@@ -10,14 +10,11 @@
     background-position: center;
     min-height: 500px;
 }
-@media screen and (max-width: 670px) {
-    #index-header {
-        min-height: 250px;
-    }
-}
+
 
 #brand-logo {
     font-family: 'Lobster', sans-serif;
+    padding-right: 3vmin;
 }
 
 #title {
@@ -30,7 +27,24 @@
     font-size: 9vmin;
 }
 
-body {
-    background-color: rgb(224, 223, 224);
+#title-index {
+    font-family: 'Lobster', sans-serif;
+    font-size: 5vmin;
 }
 
+#ale-index {
+    font-weight: bold;
+    font-size: 6.5vmin;
+}
+
+#edit-cat {
+    margin-top: 1vmin;
+}
+
+.collection-item:hover {
+    background-color: rgb(109, 168, 154);
+  }
+
+.btn-flat {
+    margin-top: -.75vmin;
+}

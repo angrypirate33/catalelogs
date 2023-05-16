@@ -1,25 +1,23 @@
 <%- include('../partials/header') %>
 <div class="container">
     
-    <h2>Browse All catALElogs</h2>
+    <h2 class="indigo-text text-darken-4" id="title-index">Browse All cat<span id="ale-index">ALE</span>logs</h2>
 
     <a href="/catalelogs/new">
         <button class="btn waves-effect waves-light">Add a New catALElog</button>
     </a>
 
-    <ul class="collection with-header">
-        <li class="collection-header"><h4>Name</h4></li>
-        <% catalelogs.forEach(function(catalelog) { %>
-          <li class="collection-item flow-text">
-            <i class="material-icons prefix">local_bar</i>
-            <a class="black-text" href="/catalelogs/<%= catalelog.id %>">
-              <%= catalelog.name %>
-            </a>
-            <form action="/catalelogs/<%= catalelog.id %>?_method=DELETE" method="POST" class="secondary-content">
-              <button type="submit"><i class="material-icons">delete</i></button>
-            </form>
-          </li>
-        <% }); %>
-      </ul>
+    <ul class="collection">
+      <% catalelogs.forEach(function(catalelog) { %>
+        <li class="collection-item flow-text">
+          <a class="indigo-text text-darken-4" href="/catalelogs/<%= catalelog.id %>">
+            <%= catalelog.name %>
+          </a>
+          <form action="/catalelogs/<%= catalelog.id %>?_method=DELETE" method="POST" class="secondary-content">
+            <button type="submit" class="btn-flat"><i class="material-icons">delete</i></button>
+          </form>
+        </li>
+      <% }); %>
+    </ul>
 </div>
 <%- include('../partials/footer') %>
