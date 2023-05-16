@@ -15,14 +15,14 @@ function index(req, res, next) {
         .then(catalelogs => {
             res.render('catalelogs/index', {
                 catalelogs,
-                title: 'My Cat-ALE-logs'
+                title: 'My catALElogs'
             })
         })
         .catch(next)
 }
 
 function newCatalelog(req, res) {
-    res.render('catalelogs/new', { title: 'New Cat-ALE-log' })
+    res.render('catalelogs/new', { title: 'New catALElog' })
 }
 
 function create(req, res, next) {
@@ -37,7 +37,7 @@ function show(req, res, next) {
     .then(catalelog => {
         res.render('catalelogs/show', {
             catalelog,
-            title: 'Cat-ALE-log Details'
+            title: 'catALElog Details'
         })
     })
     .catch(next)
@@ -48,7 +48,7 @@ function updateCatalelogForm(req, res, next) {
         .then(catalelog => {
             res.render('catalelogs/edit', {
                 catalelog,
-                title: 'Cat-ALE-log Edit Details'
+                title: 'catALElog Edit Details'
             })
         })
 }
