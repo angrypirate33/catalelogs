@@ -10,8 +10,9 @@
     <ul class="collection with-header">
         <li class="collection-header"><h4>Name</h4></li>
         <% catalelogs.forEach(function(catalelog) { %>
-          <li class="collection-item">
-            <a href="/catalelogs/<%= catalelog.id %>">
+          <li class="collection-item flow-text">
+            <i class="material-icons prefix">local_bar</i>
+            <a class="black-text" href="/catalelogs/<%= catalelog.id %>">
               <%= catalelog.name %>
             </a>
             <form action="/catalelogs/<%= catalelog.id %>?_method=DELETE" method="POST" class="secondary-content">
