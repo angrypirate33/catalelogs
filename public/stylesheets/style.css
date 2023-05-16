@@ -43,8 +43,13 @@
 
 .collection-item:hover {
     background-color: rgb(109, 168, 154);
-  }
+}
 
 .btn-flat {
     margin-top: -.75vmin;
+}
+
+#title-show {
+    font-family: 'Lobster', sans-serif;
+    font-size: 5vmin;
 }

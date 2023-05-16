@@ -1,15 +1,15 @@
 <%- include('../partials/header.ejs') %>
 <div class="container">
-    <h3 class="indigo-text text-darken-4"><%= catalelog.name %></h3>
+    <h3 class="indigo-text text-darken-4" id="title-show"><%= catalelog.name %></h3>
 
     <ul class="collection with-header">
-        <li class="collection-header indigo-text text-darken-4"><h4>Beer Name</h4></li>
+        <li class="collection-header indigo-text text-darken-4"><h5>Beer Name</h5></li>
         <% if (catalelog.beer.length) { %>
         <% catalelog.beer.forEach(function(beer) { %>
         <li class="collection-item indigo-text text-darken-4">
             <%= beer.name %>
                 <form action="/beers/<%= catalelog.id %>/<%= beer.id %>?_method=DELETE" method="POST" class="secondary-content">
-                    <button type="submit"><i class="material-icons">delete</i></button>
+                    <button type="submit" class="btn-flat"><i class="material-icons">delete</i></button>
                 </form>
             </a>
         </li>
