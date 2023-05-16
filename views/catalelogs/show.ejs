@@ -4,6 +4,7 @@
 
     <ul class="collection with-header">
         <li class="collection-header"><h4>Beer Name</h4></li>
+        <% if (catalelog.beer.length) { %>
         <% catalelog.beer.forEach(function(beer) { %>
         <li class="collection-item">
             <%= beer.name %>
@@ -13,6 +14,9 @@
             </a>
         </li>
         <% }); %>
+        <% } else { %>
+            <li class="collection-item"><h6>No Beers Added Yet</h6></li>
+        <% } %>
     </ul>
 <div class="col s12 l5">
     <form action="/beers/<%= catalelog.id %>" method="POST" autocomplete="off">

@@ -1,15 +1,16 @@
 <%- include('../partials/header') %>
 <div class="container">
-    <div class="col s12 l5">
-        <form action="/catalelogs" method="POST" autocomplete="off">
-            <div class="input-field">
-                <i class="material-icons prefix">add_circle</i>
-                <input type="text" name="name" id="name">
-                <label for="name">cat-ALE-log Name</label>
-            </div>
-            <button class="btn waves-effect waves-light" type="submit">Save Cat-ALE-log</button>
-        </form>
-    </div>
+    <h2>Add New cat-ALE-log</h2>
+        <div class="col s12 l5">
+            <form action="/catalelogs" method="POST" autocomplete="off">
+                <div class="input-field">
+                    <i class="material-icons prefix">add_circle</i>
+                    <input type="text" name="name" id="name">
+                    <label for="name">cat-ALE-log Name</label>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit">Save Cat-ALE-log</button>
+            </form>
+        </div>
 </div>
 
 <%- include('../partials/footer') %>
