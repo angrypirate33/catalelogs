@@ -29,6 +29,7 @@
 #title {
     font-family: 'Lobster', sans-serif;
     font-size: 8vmin;
+    text-shadow: 2px 2px 4px indigo;
 }
 
 #ale {
@@ -39,6 +40,8 @@
 #title-index {
     font-family: 'Lobster', sans-serif;
     font-size: 5vmin;
+    text-shadow: 1px 1px 2px indigo;
+
 }
 
 #ale-index {
@@ -61,4 +64,5 @@
 #title-show {
     font-family: 'Lobster', sans-serif;
     font-size: 5vmin;
+    text-shadow: 1px 1px 2px indigo;
 }
