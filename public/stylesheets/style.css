@@ -1,1 +1,16 @@
+#photos {
+    padding-top: 4vw;
+    padding-bottom: 4vw;
+}
 
+#index-header {
+    background: url(https://i.imgur.com/oiNhsAR.jpg);
+    background-size: cover;
+    background-position: center;
+    min-height: 500px;
+}
+@media screen and (max-width: 670px) {
+    #index-header {
+        min-height: 250px;
+    }
+}
