@@ -16,6 +16,10 @@
     }
 }
 
+#brand-logo {
+    font-family: 'Lobster', sans-serif;
+}
+
 #title {
     font-family: 'Lobster', sans-serif;
     font-size: 8vmin;
