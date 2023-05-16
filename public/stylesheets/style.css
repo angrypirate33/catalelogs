@@ -1,3 +1,4 @@
+
 #photos {
     padding-top: 4vw;
     padding-bottom: 4vw;
@@ -15,8 +16,14 @@
     }
 }
 
+#title {
+    font-family: 'Lobster', sans-serif;
+    font-size: 8vmin;
+}
+
 #ale {
     font-weight: bold;
+    font-size: 9vmin;
 }
 
 body {
