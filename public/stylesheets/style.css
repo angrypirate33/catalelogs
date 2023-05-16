@@ -11,6 +11,15 @@
     min-height: 500px;
 }
 
+#cat-header {
+    font-family: 'Lobster', sans-serif;
+    font-weight: bold;
+}
+
+#cat-side {
+    font-family: 'Lobster', sans-serif;
+    font-weight: bold;
+}
 
 #brand-logo {
     font-family: 'Lobster', sans-serif;
