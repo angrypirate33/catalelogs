@@ -14,3 +14,12 @@
         min-height: 250px;
     }
 }
+
+#ale {
+    font-weight: bold;
+}
+
+body {
+    background-color: rgb(224, 223, 224);
+}
+
