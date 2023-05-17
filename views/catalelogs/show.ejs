@@ -23,7 +23,7 @@
     <form action="/beers/<%= catalelog.id %>" method="POST" autocomplete="off">
         <div class="input-field">
             <i class="material-icons prefix">add_circle</i>
-            <input type="text" name="name" id="name">
+            <input type="text" name="name" id="name" oninput="searchBeers()">
             <label for="name">Beer Name</label>
         </div>
         <button class="btn waves-effect waves-light" type="submit">Add Beer</button>
