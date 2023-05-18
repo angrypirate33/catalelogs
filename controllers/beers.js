@@ -23,7 +23,6 @@ function index(req, res, next) {
             beers: beers.data,
             title: 'Beer List'
         })
-        console.log(beers.data)
     })
     .catch(next)
 }
@@ -35,8 +34,45 @@ function show(req, res, next) {
 }
 
 function searchBeer(req, res, next) {
-    
+    const encodedKey = process.env.ENCODED_KEY;
+    const searchTerm = req.query.searchName; // Assuming the user enters the search term in a form field named "searchTerm"
+
+    const options = {
+        headers: {
+            Authorization: `Basic ${encodedKey}`,
+            Accept: 'application/json'
+        }
+    };
+
+    fetch('https://api.catalog.beer/beer', options)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch beers');
+            }
+            return response.json();
+        })
+        .then(beers => {
+            // Filter the beers based on the search term
+            const filteredBeers = beers.data.filter(beer =>
+                beer.name.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+
+            res.render('beers/index', {
+                beers: filteredBeers,
+                title: 'Search Results'
+            });
+        })
+        .catch(error => {
+            next(error);
+        });
 }
+
+function show(req, res, next) {
+    res.render('beers/show', {
+        title: 'Beer Detail'
+    })
+}
+
 
 function addBeerToCatalelog(req, res, next) {
     Catalelog.findById(req.params.catalelogId)
