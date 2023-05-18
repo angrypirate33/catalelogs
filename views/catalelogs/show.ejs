@@ -2,6 +2,9 @@
 <div class="container">
     <h3 class="indigo-text text-darken-4" id="title-show"><%= catalelog.name %></h3>
     <h5 class="indigo-text text-darken-4">Created by: <%= user.name %></h5>
+    <a href="/catalelogs/<%= catalelog.id %>/edit">
+        <button class="btn waves-effect waves-light" id="edit-cat">Edit Name</button>
+    </a>
 
     <ul class="collection with-header">
         <li class="collection-header indigo-text text-darken-4"><h5>Beer Name</h5></li>
@@ -29,9 +32,15 @@
         <button class="btn waves-effect waves-light" type="submit">Add Beer</button>
     </form>
 
-<a href="/catalelogs/<%= catalelog.id %>/edit">
-    <button class="btn waves-effect waves-light" id="edit-cat">Edit Name</button>
-</a>
+    <form action="/beers/search" method="GET" autocomplete="off">
+        <div class="input-field">
+            <i class="material-icons prefix">search</i>
+            <input type="text" name="search-name" id="search-name">
+            <label for="search-name">Beer to Search For</label>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit">Search for Beer</button>
+    </form>
+
 </div>
 </div>
 

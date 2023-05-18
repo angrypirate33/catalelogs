@@ -3,6 +3,7 @@ const Catalelog = require('../models/catalelog')
 module.exports = {
     index,
     show,
+    searchBeer,
     addBeerToCatalelog,
     deleteBeerFromCatalelog
 }
@@ -15,10 +16,8 @@ function index(req, res, next) {
             Accept: 'application/json'
         }
     }
-    fetch('https://api.catalog.beer/beer?count=10%cursor=', options)
-    .then(res => {
-        if (res.ok) return res.json();
-    })    
+    fetch('https://api.catalog.beer/beer?count=100%cursor=', options)
+    .then(res => res.json())    
     .then(beers => {
         res.render('beers/index', {
             beers: beers.data,
@@ -33,6 +32,10 @@ function show(req, res, next) {
     res.render('beers/show', {
         title: 'Beer Detail'
     })
+}
+
+function searchBeer(req, res, next) {
+    
 }
 
 function addBeerToCatalelog(req, res, next) {

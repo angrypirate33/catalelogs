@@ -3,10 +3,12 @@
 <div class="container">
     <h2>Beer List</h2>
 
+    <div class="row">
         <% beers.forEach(function(beer) { %>
-        <%= beer.name %>
+            <div class="col s12 m8 l6 xl3 ">
+                <h6><%= beer.name %></h6>
+            </div>
         <% }); %>
-
+    </div>
 </div>
-
 <%- include('../partials/footer') %>
