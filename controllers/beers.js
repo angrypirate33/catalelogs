@@ -33,39 +33,56 @@ function show(req, res, next) {
     })
 }
 
-function searchBeer(req, res, next) {
-    const encodedKey = process.env.ENCODED_KEY;
-    const searchTerm = req.query.searchName; // Assuming the user enters the search term in a form field named "searchTerm"
+async function searchBeer(req, res, next) {
+    const encodedKey = process.env.ENCODED_KEY
+    const perPage = 10000 // Number of beers to fetch per search request
+    const searchTerm = req.query.searchName
 
-    const options = {
-        headers: {
-            Authorization: `Basic ${encodedKey}`,
-            Accept: 'application/json'
+  const options = {
+    headers: {
+      Authorization: `Basic ${encodedKey}`,
+      Accept: 'application/json'
+    }
+  }
+
+  try {
+    let nextCursor = null
+    let allBeers = []
+
+    while (true) {
+        let url = `https://api.catalog.beer/beer?count=${perPage}`
+        if (nextCursor) {
+          url += `&cursor=${encodeURIComponent(nextCursor)}`
         }
-    };
-
-    fetch('https://api.catalog.beer/beer', options)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Failed to fetch beers');
-            }
-            return response.json();
-        })
-        .then(beers => {
-            // Filter the beers based on the search term
-            const filteredBeers = beers.data.filter(beer =>
-                beer.name.toLowerCase().includes(searchTerm.toLowerCase())
-            );
-
-            res.render('beers/index', {
-                beers: filteredBeers,
-                title: 'Search Results'
-            });
-        })
-        .catch(error => {
-            next(error);
-        });
-}
+  
+        const response = await fetch(url, options)
+        const apiData = await response.json()
+        const beers = apiData.data
+  
+        // Filter the beers based on the search term
+        const filteredBeers = beers.filter(beer =>
+          beer.name.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+  
+        // Add the filtered beers to the result array
+        allBeers.push(...filteredBeers)
+  
+        if (!apiData.next_cursor) {
+          // Reached the last page, exit the loop
+          break
+        }
+  
+        nextCursor = apiData.next_cursor;
+      }
+  
+      res.render('beers/index', {
+        beers: allBeers,
+        title: 'Search Results'
+      })
+    } catch (error) {
+      next(error);
+    }
+  }
 
 function show(req, res, next) {
     res.render('beers/show', {
