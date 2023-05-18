@@ -28,10 +28,29 @@ function index(req, res, next) {
 }
 
 function show(req, res, next) {
-    res.render('beers/show', {
-        title: 'Beer Detail'
-    })
-}
+    const beerId = req.params.id
+    const encodedKey = process.env.ENCODED_KEY
+    const options = {
+      headers: {
+        Authorization: `Basic ${encodedKey}`,
+        Accept: 'application/json',
+      }
+    }
+    fetch(`https://api.catalog.beer/beer/${beerId}`, options)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch beer details')
+        }
+        return response.json()
+      })
+      .then((beer) => {
+        res.render('beers/show', {
+          beer,
+          title: 'Beer Detail'
+        })
+      })
+      .catch(next);
+  }
 
 async function searchBeer(req, res, next) {
     const encodedKey = process.env.ENCODED_KEY
@@ -83,13 +102,6 @@ async function searchBeer(req, res, next) {
       next(error);
     }
   }
-
-function show(req, res, next) {
-    res.render('beers/show', {
-        title: 'Beer Detail'
-    })
-}
-
 
 function addBeerToCatalelog(req, res, next) {
     Catalelog.findById(req.params.catalelogId)

@@ -6,7 +6,9 @@
     <div class="row">
         <% beers.forEach(function(beer) { %>
             <div class="col s12 m8 l6 xl3 ">
-                <h6><%= beer.name %></h6>
+                <h6>
+                    <a href="/beers/<%= beer.id %>"><%= beer.name %></a>
+                </h6>
             </div>
         <% }); %>
     </div>

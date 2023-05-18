@@ -5,7 +5,7 @@ const beerCtrl = require('../controllers/beers')
 
 router.get('/', beerCtrl.index)
 router.get('/search', beerCtrl.searchBeer)
-router.get('/:name', beerCtrl.show)
+router.get('/:id', beerCtrl.show)
 router.post('/:catalelogId', beerCtrl.addBeerToCatalelog)
 router.delete('/:catalelogId/:beerId', beerCtrl.deleteBeerFromCatalelog)
 
