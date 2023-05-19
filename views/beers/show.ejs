@@ -5,8 +5,18 @@
     <p>Name: <%= beer.name %></p>
     <p>Brewery: <%= beer.brewer.name %></p>
     <p>Style: <%= beer.style %></p>
-    <p>ABV: <%= beer.abv %></p>
+    <p>ABV: <%= beer.abv %>%</p>
     <p>IBU: <%= beer.ibu %></p>
+
+    <form action="/beers/<%= beer.id %>/add-beer/<%= catalelogId %>?_method=PUT" method="POST">
+        <input type="hidden" name="beerId" value="<%= beer.id %>">
+        <input type="hidden" name="name" value="<%= beer.name %>">
+        <input type="hidden" name="brewery" value="<%= beer.brewer.name %>">
+        <input type="hidden" name="style" value="<%= beer.style %>">
+        <input type="hidden" name="abv" value="<%= beer.abv %>">
+        <input type="hidden" name="ibu" value="<%= beer.ibu %>">
+        <button type="submit" class="btn waves-effect waves-light">Add to Catalelog</button>
+    </form>
 </div>
 
 <%- include('../partials/footer.ejs') %>

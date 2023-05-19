@@ -4,13 +4,17 @@
     <h2 class="indigo-text text-darken-4">Search Results</h2>
 
     <div class="row">
+        <% if (beers.length) { %>
         <% beers.forEach(function(beer) { %>
             <div class="col s12 m8 l6 xl3 ">
                 <h6>
-                    <a href="/beers/<%= beer.id %>"><%= beer.name %></a>
+                    <a href="/beers/<%= beer.id %>?catalelogId=<%= catalelogId %>"><%= beer.name %></a>
                 </h6>
             </div>
         <% }); %>
+        <% } else { %>
+            <h4 class="indigo-text text-darken-4">No Beers Found</h4>
+        <% } %>
     </div>
 </div>
 <%- include('../partials/footer') %>

@@ -1,11 +1,13 @@
 const Catalelog = require('../models/catalelog')
+const mongoose = require('mongoose')
 
 module.exports = {
     index,
     show,
     searchBeer,
     addBeerToCatalelog,
-    deleteBeerFromCatalelog
+    deleteBeerFromCatalelog,
+    addBeer
 }
 
 function index(req, res, next) {
@@ -28,8 +30,9 @@ function index(req, res, next) {
 }
 
 function show(req, res, next) {
-    const beerId = req.params.id
     const encodedKey = process.env.ENCODED_KEY
+    const beerId = req.params.id
+    const catalelogId = req.query.catalelogId
     const options = {
       headers: {
         Authorization: `Basic ${encodedKey}`,
@@ -46,6 +49,7 @@ function show(req, res, next) {
       .then((beer) => {
         res.render('beers/show', {
           beer,
+          catalelogId,
           title: 'Beer Detail'
         })
       })
@@ -56,6 +60,7 @@ async function searchBeer(req, res, next) {
     const encodedKey = process.env.ENCODED_KEY
     const perPage = 10000 // Number of beers to fetch per search request
     const searchTerm = req.query.searchName
+    const catalelogId = req.query.catalelogId
 
   const options = {
     headers: {
@@ -96,6 +101,7 @@ async function searchBeer(req, res, next) {
   
       res.render('beers/index', {
         beers: allBeers,
+        catalelogId,
         title: 'Search Results'
       })
     } catch (error) {
@@ -123,3 +129,20 @@ function deleteBeerFromCatalelog(req, res, next) {
         .then(() => res.redirect(`/catalelogs/${req.params.catalelogId}`))
         .catch(next)
 }
+
+async function addBeer(req, res, next) {
+    try {
+      const catalelogId = new mongoose.Types.ObjectId(req.params.catalelogId);
+      const beer = req.body;
+  
+      const catalog = await Catalelog.findByIdAndUpdate(
+        catalelogId,
+        { $push: { beer: beer } },
+        { new: true }
+      );
+  
+      res.redirect(`/catalelogs/${catalelogId}`);
+    } catch (error) {
+      next(error);
+    }
+  }  

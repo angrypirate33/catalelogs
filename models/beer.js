@@ -7,13 +7,17 @@ const beerSchema = new Schema({
         required: true
     },
     brewery: {
-        type: String,
+        type: String
     },
-    rating: {
-        type: Number,
-        min: 1,
-        max: 10
-    } 
+    style: {
+        type: String
+    },
+    abv: {
+        type: String
+    }, 
+    ibu: {
+        type: String
+    }
 }, {
     timestamps: true
 })

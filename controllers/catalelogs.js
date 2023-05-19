@@ -33,10 +33,12 @@ function create(req, res, next) {
 }
 
 function show(req, res, next) {
+    const catalelogId = req.params.id
     Catalelog.findById(req.params.id)
     .then(catalelog => {
         res.render('catalelogs/show', {
             catalelog,
+            catalelogId,
             title: 'catALElog Details'
         })
     })
@@ -72,3 +74,4 @@ function deleteCatalelog(req, res, next) {
     .then(() => res.redirect('/catalelogs'))
     .catch()
 }
+
