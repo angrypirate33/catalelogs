@@ -1,7 +1,7 @@
 <%- include('../partials/header.ejs') %>
 <div class="container">
     <h3 class="indigo-text text-darken-4" id="title-show"><%= catalelog.name %></h3>
-    <h5 class="indigo-text text-darken-4">Created by: <%= user.name %></h5>
+    <h5 class="indigo-text text-darken-4"><%= catalelog.beer.length %> Beers in List</h5>
     <a href="/catalelogs/<%= catalelog.id %>/edit">
         <button class="btn waves-effect waves-light" id="edit-cat">Edit Name</button>
     </a>
