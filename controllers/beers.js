@@ -155,7 +155,7 @@ async function searchBeer(req, res, next) {
   
         nextCursor = apiData.next_cursor;
       }
-  
+      
       res.render('beers/index', {
         beers: allBeers,
         catalelogId,

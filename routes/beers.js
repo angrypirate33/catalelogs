@@ -10,5 +10,6 @@ router.get('/:id/catalelog', beerCtrl.showCatalelogBeerDetails)
 router.put('/:beerId/add-beer/:catalelogId', beerCtrl.addBeer)
 router.post('/:beerId/:catalelogId', beerCtrl.addBeerToCatalelog)
 router.delete('/:catalelogId/:beerId', beerCtrl.deleteBeerFromCatalelog)
+router.delete('/:beerId/catalelog?catalelogId=:catalelogId', beerCtrl.deleteBeerFromCatalelog)
 
 module.exports = router

@@ -1,14 +1,24 @@
 <%- include('../partials/header.ejs') %>
 
 <div class="container">
-<h3>Beer Detail Page</h3>
-    <p>Name: <%= beer.name %></p>
-    <p>Brewery: <%= beer.brewer.name %></p>
-    <p>Style: <%= beer.style %></p>
-    <p>ABV: <%= beer.abv %>%</p>
-    <p>IBU: <%= beer.ibu %></p>
+    <h3 class="center-align indigo-text text-darken-4" id="showTitle">Beer Details</h3>
+    <div class="row">
+        <div class="col s12 m6 offset-m3">
+            <div class="card">
+                <div class="card-content">
+                    <p class="flow-text indigo-text text-darken-4" id="showCardTitle"><%= beer.name %></p>
+                    <p class="flow-text indigo-text text-darken-4"><strong>Brewery:</strong> <%= beer.brewer.name %></p>
+                    <p class="flow-text indigo-text text-darken-4"><strong>Style:</strong> <%= beer.style %></p>
+                    <p class="flow-text indigo-text text-darken-4"><strong>ABV:</strong> <%= beer.abv %>%</p>
+                    <p class="flow-text indigo-text text-darken-4"><strong>IBU:</strong> <%= beer.ibu %></p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <form action="/beers/<%= beer.id %>/add-beer/<%= catalelogId %>?_method=PUT" method="POST">
+
+
+    <form class="center-align" action="/beers/<%= beer.id %>/add-beer/<%= catalelogId %>?_method=PUT" method="POST">
         <input type="hidden" name="beerId" value="<%= beer.id %>">
         <input type="hidden" name="name" value="<%= beer.name %>">
         <input type="hidden" name="brewery" value="<%= beer.brewer.name %>">
