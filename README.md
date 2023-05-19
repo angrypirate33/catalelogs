@@ -12,7 +12,8 @@
 # Catalog your Beer with cat ALE logs
 
 ## Description
-
+Search a databse of over 60,000 beers and mix and match them on your personal beer "playlists".
+View brewery, style, ABV%, and IBU rating for each beer.
 
 ## Screenshots
 ### cat ALE log List
