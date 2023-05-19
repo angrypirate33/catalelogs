@@ -11,7 +11,7 @@
         <% if (catalelog.beer.length) { %>
         <% catalelog.beer.forEach(function(beer) { %>
         <li class="collection-item indigo-text text-darken-4">
-            <%= beer.name %>
+            <a href="/beers/<%= beer.id %>/catalelog?catalelogId=<%= catalelogId %>"><%= beer.name %></a>
                 <form action="/beers/<%= catalelog.id %>/<%= beer.id %>?_method=DELETE" method="POST" class="secondary-content">
                     <button type="submit" class="btn-flat"><i class="material-icons">delete</i></button>
                 </form>

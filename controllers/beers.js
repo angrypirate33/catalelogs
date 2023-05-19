@@ -4,6 +4,8 @@ const mongoose = require('mongoose')
 module.exports = {
     index,
     show,
+    showBeerDetails,
+    showCatalelogBeerDetails,
     searchBeer,
     addBeerToCatalelog,
     deleteBeerFromCatalelog,
@@ -55,6 +57,61 @@ function show(req, res, next) {
       })
       .catch(next);
   }
+
+  function showBeerDetails(req, res, next) {
+    const encodedKey = process.env.ENCODED_KEY
+    const beerId = req.params.id
+    const catalelogId = req.query.catalelogId
+    const options = {
+      headers: {
+        Authorization: `Basic ${encodedKey}`,
+        Accept: 'application/json',
+      }
+    }
+    fetch(`https://api.catalog.beer/beer/${beerId}`, options)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch beer details')
+        }
+        return response.json()
+      })
+      .then((beer) => {
+        res.render('beers/show', {
+          beer,
+          catalelogId,
+          title: 'Beer Detail'
+        })
+      })
+      .catch(next);
+  }
+
+  async function showCatalelogBeerDetails(req, res, next) {
+      try {
+        const beerId = req.params.id;
+        const catalelogId = req.query.catalelogId;
+        
+        const catalelog = await Catalelog.findById(catalelogId);
+      
+        if (!catalelog) {
+          throw new Error('Catalelog not found');
+        }
+        
+        const beer = catalelog.beer.find((beer) => beer.id === beerId);
+      
+        if (!beer) {
+          throw new Error('Beer not found');
+        }
+      
+        res.render('beers/show2', {
+          beer,
+          catalelogId,
+          title: 'Beer Detail'
+        });
+      } catch (error) {
+        next(error);
+      }
+    }
+  
 
 async function searchBeer(req, res, next) {
     const encodedKey = process.env.ENCODED_KEY
