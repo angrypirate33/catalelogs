@@ -66,3 +66,14 @@
     font-size: 5vmin;
     text-shadow: 1px 1px 2px indigo;
 }
+
+#show2Title {
+    font-family: 'Lobster', sans-serif;
+    font-size: 5vmin;
+    text-shadow: 1px 1px 2px indigo;
+}
+
+#showCardTitle {
+    font-size: 3vmin;
+    text-decoration: underline;
+}
