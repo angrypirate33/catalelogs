@@ -61,6 +61,11 @@
     font-family: 'Lobster', sans-serif;    
 }
 
+#searchTitle {
+    font-family: 'Lobster', sans-serif;
+    text-shadow: 1px 1px 2px indigo;
+}
+
 .removeBullets {
     list-style-type: none;
 }
