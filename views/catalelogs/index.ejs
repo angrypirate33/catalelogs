@@ -6,7 +6,7 @@
     <a href="/catalelogs/new">
         <button class="btn waves-effect waves-light">Add a New catALElog</button>
     </a>
-
+    <% if (catalelogs.length) { %>
     <ul class="collection">
       <% catalelogs.forEach(function(catalelog) { %>
         <li class="collection-item flow-text">
@@ -18,6 +18,11 @@
           </form>
         </li>
       <% }); %>
+      <% } else { %>
+        <span class="removeBullets">
+        <li class="collection-item"><h4 class="indigo-text text-darken-4">No <span id="catIndBrand">catALElogs</span> yet, create one using the button above.</h4></li>
+        </span>
+        <% } %>
     </ul>
 </div>
 <%- include('../partials/footer') %>

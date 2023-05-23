@@ -57,6 +57,14 @@
     background-color: rgb(109, 168, 154);
 }
 
+#catIndBrand {
+    font-family: 'Lobster', sans-serif;    
+}
+
+.removeBullets {
+    list-style-type: none;
+}
+
 .collection-item:hover a {
     color: white;
 }
